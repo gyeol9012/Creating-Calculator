@@ -45,26 +45,29 @@ public class App {
            if(validOperation) { //validOperation이 true이면(연산오류가 없으면)
                System.out.println("결과: " + result);
                list.add(result); //리스트에 결과값 저장
-               System.out.println("현재 저장된 결과는 " + list.size() + "개 입니다");
            }
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료,remove 입력 시 먼저 입력된 결과 삭제)");// 계산식 중단 메세지
-            String text = sc.next(); //메세지 입력창 생성
-            if(Objects.equals(text, "exit")) { // exit 와 같은지 확인
-                for (int i = 0; i < list.size(); i++) {
-                    System.out.println("저장된 결과 " + i + ": " + list.get(i));
+             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+             String text1 = sc.next(); //메세지 입력창 생성
+             if (Objects.equals(text1,"remove")){//remove라고 쓴다면
+                 if (!list.isEmpty()) { //list가 비어있지않으면
+                     list.remove(0);//가장 먼저 저장된 결과 삭제
+                     System.out.println("가정 먼저 저장된 결과를 삭제했습니다");
+                 }else {
+                     System.out.println("저장된 결과가 없습니다.");
+                 }
+             }
+             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+             String text2 = sc.next(); //메세지 입력창 생성
+            if (Objects.equals(text2,"inquiry")){ //inquiry라고 쓴다면
+                for (int resultvalue : list){ // 향상된 for문
+                    System.out.println(resultvalue);
                 }
+            }
+             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");// 계산식 중단 메세지
+            String text3 = sc.next(); //메세지 입력창 생성
+            if(Objects.equals(text3, "exit")) { // exit 와 같은지 확인
                 break; // 같으면 즉시 중단
             }
-            if (Objects.equals(text,"remove")){//remove라고 쓴다면
-                    if (!list.isEmpty()) { //list가 비어있지않으면
-                        list.remove(0);//가장 먼저 저장된 결과 삭제
-                        System.out.println("가정 먼저 저장된 결과를 삭제했습니다");
-                    }else {
-                        System.out.println("저장된 결과가 없습니다.");
-                    }
-            }
-
-
         }
     }
 }
