@@ -3,7 +3,7 @@ package calculator;
 import java.util.ArrayList;
 
 class Calculator {
-    ArrayList<Integer> results = new ArrayList<>();
+    private ArrayList<Integer> results = new ArrayList<>(); //private으로 설정하여 캡슐화
     public int calculate(int num1, int num2, char operator) throws ThrowException {
          int result;
          switch (operator){
@@ -30,9 +30,13 @@ class Calculator {
             return result;
 
      }
-     public  ArrayList<Integer> getResults(){
-        return results; //결과를 반환하는 메서드
+     public  ArrayList<Integer> getResults(){ //Getter
+        return new ArrayList<>(results); // 결과를 복사하여 반환(읽기 전용)
      }
-
+    public void removeFirstResult() { //Setter 외부에서 직접 수정못함
+        if (!results.isEmpty()){
+            results.remove(0);//가장 먼저 저장된 결과 삭제
     }
+    }
+}
 

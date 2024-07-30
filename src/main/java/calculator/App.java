@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Calculator calculator = new Calculator(); //Calculator 클래스 인스턴스 생성
-//        ArrayList<Integer> list = new ArrayList<>();//연산결과를 무한히 저장할 수 있는 리스트생성
         Scanner sc = new Scanner(System.in);
 
          while(true){
@@ -26,23 +25,20 @@ public class App {
                  System.out.println(e.getMessage());
                  validOperation = false; // 예외 발생 시 유효한 연산이 아님
              }
-             if (validOperation){// validOperation이 true이면 (연산오류가 없으면)
-                 // 결과값이 이미 리스트에 저장됨
-             }
-//            /* 제어문을 활용하여 위 요구사항을 만족할 수 있게 구현합니다.*/
-//           if(validOperation) { //validOperation이 true이면(연산오류가 없으면)
-//               System.out.println("결과: " + result);
-//               list.add(result); //리스트에 결과값 저장
-//           }
+//             if (validOperation){// validOperation이 true이면 (연산오류가 없으면)
+//                 // 결과값이 이미 리스트에 저장됨
+//             }
+//
              System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
              String text1 = sc.next(); //메세지 입력창 생성
              if (Objects.equals(text1,"remove")){//remove라고 쓴다면
-                 if (!calculator.getResults().isEmpty()) { //Results가 비어있지않으면
-                     calculator.getResults().remove(0);//가장 먼저 저장된 결과 삭제
+                 calculator.removeFirstResult(); //첫번째 결과 삭제
+//                 if (!calculator.getResults().isEmpty()) { //Results가 비어있지않으면
+//                     calculator.getResults().remove(0);//가장 먼저 저장된 결과 삭제
                      System.out.println("가정 먼저 저장된 결과를 삭제했습니다");
-                 }else {
-                     System.out.println("저장된 결과가 없습니다.");
-                 }
+//                 }else {
+//                     System.out.println("저장된 결과가 없습니다.");
+//                 }
              }
              System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
              String text2 = sc.next(); //메세지 입력창 생성
