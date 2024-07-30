@@ -37,10 +37,9 @@ class Calculator {
         this.results =results;
     }
     public void removeResult(){
-        if (!results.isEmpty()){
+        if (!results.isEmpty()){ //비어있지 않는 경우에만 사용
             results.remove(0); //가장 먼저 저장된 결과 삭제
         }
     }
-
 }
 
