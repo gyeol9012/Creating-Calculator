@@ -36,9 +36,15 @@ class Calculator {
      public void setResults(ArrayList<Integer> results){
         this.results =results;
     }
-    public void removeResult(){
-        if (!results.isEmpty()){ //비어있지 않는 경우에만 사용
+    public void removeResult() {
+        if (!results.isEmpty()) { //비어있지 않는 경우에만 사용
             results.remove(0); //가장 먼저 저장된 결과 삭제
+        }
+    }
+    public void inquiryResults(){
+        System.out.println("저장된 연산 결과들:");
+        for (int result : results) {
+            System.out.println(result);
         }
     }
 }

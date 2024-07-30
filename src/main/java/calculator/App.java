@@ -39,22 +39,15 @@ public class App {
              System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
              String text1 = sc.next(); //메세지 입력창 생성
              if (Objects.equals(text1,"remove")){//remove라고 쓴다면
-//                 ArrayList<Integer> results = calculator.getResults();
-//                 if (calculator.getResults().isEmpty()) { //Results가 비어있지않으면
                      calculator.removeResult(); //removeResult 활용
-//                     results.remove(0);//첫번째 결과 삭제
-//                     calculator.setResults(results); // 삭제 후 결과 리스트를 다시 설정
                      System.out.println("가장 먼저 저장된 결과를 삭제했습니다");
-//                 }else {
-//                     System.out.println("저장된 결과가 없습니다.");
-
              }
              System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
              String text2 = sc.next(); //메세지 입력창 생성
             if (Objects.equals(text2,"inquiry")){ //inquiry라고 쓴다면
-                for (int resultvalue : calculator.getResults()){ // 향상된 for문
-                    System.out.println(resultvalue);
-                }
+                calculator.inquiryResults();
+//                for (int resultvalue : calculator.getResults()){ // 향상된 for문
+//                    System.out.println(resultvalue);
             }
              System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");// 계산식 중단 메세지
             String text3 = sc.next(); //메세지 입력창 생성
