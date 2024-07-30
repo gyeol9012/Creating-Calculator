@@ -2,8 +2,13 @@ package calculator;
 
 import java.util.ArrayList;
 
-class Calculator {
-    private ArrayList<Integer> results = new ArrayList<>(); //private으로 설정하여 캡슐화
+class Calculator{
+    private ArrayList<Integer> results; //private으로 설정하여 캡슐화
+
+    //생성자 : 초기 연산 결과 리스트를 작성
+    public Calculator(ArrayList<Integer> initialResults) {
+        this.results =new ArrayList<>(initialResults); //초기 결과를 복사하여 설정
+    }
     public int calculate(int num1, int num2, char operator) throws ThrowException {
          int result;
          switch (operator){
@@ -34,7 +39,7 @@ class Calculator {
         return new ArrayList<>(results); // 결과를 복사하여 반환(읽기 전용)
      }
      public void setResults(ArrayList<Integer> results){
-        this.results =results;
+        this.results =new ArrayList<>(results); //복사본을 만들어 할당
     }
     public void removeResult() {
         if (!results.isEmpty()) { //비어있지 않는 경우에만 사용

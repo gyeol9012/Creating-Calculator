@@ -6,14 +6,16 @@ import java.util.Scanner;
 //
 public class App {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator(); //Calculator 클래스 인스턴스 생성
-        Scanner sc = new Scanner(System.in);
-
         //초기 results 리스트를 설정하는 예시
         ArrayList<Integer> initialResults = new ArrayList<>();
         initialResults.add(100);
         initialResults.add(200);
-        calculator.setResults(initialResults);
+        //Calculator 클래스 인스턴스를 초기 results 리스트와 함께 생성
+        Calculator calculator = new Calculator(initialResults); //Calculator 클래스 인스턴스 생성
+
+        Scanner sc = new Scanner(System.in);
+
+//        calculator.setResults(initialResults);
 
          while(true){
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -46,8 +48,6 @@ public class App {
              String text2 = sc.next(); //메세지 입력창 생성
             if (Objects.equals(text2,"inquiry")){ //inquiry라고 쓴다면
                 calculator.inquiryResults();
-//                for (int resultvalue : calculator.getResults()){ // 향상된 for문
-//                    System.out.println(resultvalue);
             }
              System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");// 계산식 중단 메세지
             String text3 = sc.next(); //메세지 입력창 생성
