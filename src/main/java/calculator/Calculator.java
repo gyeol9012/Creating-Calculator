@@ -30,13 +30,12 @@ class Calculator {
             return result;
 
      }
-     public  ArrayList<Integer> getResults(){ //Getter
+     public ArrayList<Integer> getResults(){ //Getter
         return new ArrayList<>(results); // 결과를 복사하여 반환(읽기 전용)
      }
-    public void removeFirstResult() { //Setter 외부에서 직접 수정못함
-        if (!results.isEmpty()){
-            results.remove(0);//가장 먼저 저장된 결과 삭제
+     public void setResults(ArrayList<Integer> results){
+        this.results =results;
     }
-    }
+
 }
 

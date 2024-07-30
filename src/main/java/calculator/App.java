@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 //
@@ -7,6 +8,12 @@ public class App {
     public static void main(String[] args) {
         Calculator calculator = new Calculator(); //Calculator 클래스 인스턴스 생성
         Scanner sc = new Scanner(System.in);
+
+        //초기 results 리스트를 설정하는 예시
+        ArrayList<Integer> initialResults = new ArrayList<>();
+        initialResults.add(100);
+        initialResults.add(200);
+        calculator.setResults(initialResults);
 
          while(true){
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -25,20 +32,21 @@ public class App {
                  System.out.println(e.getMessage());
                  validOperation = false; // 예외 발생 시 유효한 연산이 아님
              }
-//             if (validOperation){// validOperation이 true이면 (연산오류가 없으면)
-//                 // 결과값이 이미 리스트에 저장됨
-//             }
-//
+             if (validOperation){// validOperation이 true이면 (연산오류가 없으면)
+                 // 결과값이 이미 리스트에 저장됨
+             }
+
              System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
              String text1 = sc.next(); //메세지 입력창 생성
              if (Objects.equals(text1,"remove")){//remove라고 쓴다면
-                 calculator.removeFirstResult(); //첫번째 결과 삭제
-//                 if (!calculator.getResults().isEmpty()) { //Results가 비어있지않으면
-//                     calculator.getResults().remove(0);//가장 먼저 저장된 결과 삭제
-                     System.out.println("가정 먼저 저장된 결과를 삭제했습니다");
-//                 }else {
-//                     System.out.println("저장된 결과가 없습니다.");
-//                 }
+                 ArrayList<Integer> results = calculator.getResults();
+                 if (!results.isEmpty()) { //Results가 비어있지않으면
+                     results.remove(0);//첫번째 결과 삭제
+                     calculator.setResults(results); // 삭제 후 결과 리스트를 다시 설정
+                     System.out.println("가장 먼저 저장된 결과를 삭제했습니다");
+                 }else {
+                     System.out.println("저장된 결과가 없습니다.");
+                 }
              }
              System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
              String text2 = sc.next(); //메세지 입력창 생성
