@@ -30,6 +30,9 @@ class Calculator {
             return result;
 
      }
+     public  ArrayList<Integer> getResults(){
+        return results; //결과를 반환하는 메서드
+     }
 
     }
 
