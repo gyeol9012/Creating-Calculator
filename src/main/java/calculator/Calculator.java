@@ -3,11 +3,14 @@ package calculator;
 import java.util.ArrayList;
 
 class Calculator{
-    private ArrayList<Integer> results; //private으로 설정하여 캡슐화
+    private ArrayList<Integer> results;
+    private ArrayList<Double> circleAreas; //원의 넓이 결과를 저장하는 리스트
+
 
     //생성자 : 초기 연산 결과 리스트를 작성
     public Calculator(ArrayList<Integer> initialResults) {
-        this.results =new ArrayList<>(initialResults); //초기 결과를 복사하여 설정
+        this.results =new ArrayList<>(initialResults);
+        this.circleAreas = new ArrayList<>(); //원의 넓이 결과 리스트 초기화
     }
     public int calculate(int num1, int num2, char operator) throws ThrowException {
          int result;
@@ -35,21 +38,41 @@ class Calculator{
             return result;
 
      }
-     public ArrayList<Integer> getResults(){ //Getter
-        return new ArrayList<>(results); // 결과를 복사하여 반환(읽기 전용)
+     public double calculateCircleArea(double radius){
+        final double PI = 3.14159; //원주율은 변하지 않는 상수이므로 final 키워드 사용
+        double area = PI *radius*radius;
+        circleAreas.add(area); //계산된 원의 넓이를 리스트에 추가
+         return  area;
+     }
+     public ArrayList<Integer> getResults(){
+        return new ArrayList<>(results);
      }
      public void setResults(ArrayList<Integer> results){
-        this.results =new ArrayList<>(results); //복사본을 만들어 할당
+        this.results =new ArrayList<>(results);
     }
+    public ArrayList<Double> getcircleAreas(){ //gtter
+        return new ArrayList<>(circleAreas); //결과를 복사하여 반환(읽기전용)
+    }
+    public void setCircleAreas(ArrayList<Double> circleAreas){
+        this.circleAreas = new ArrayList<>(circleAreas); //복사본을 만들어 할당
+    }
+
+
     public void removeResult() {
-        if (!results.isEmpty()) { //비어있지 않는 경우에만 사용
-            results.remove(0); //가장 먼저 저장된 결과 삭제
+        if (!results.isEmpty()) {
+            results.remove(0);
         }
     }
     public void inquiryResults(){
         System.out.println("저장된 연산 결과들:");
         for (int result : results) {
             System.out.println(result);
+        }
+    }
+    public void inquiryCircleAreas(){
+        System.out.println("저장된 원의 넓이 결과들:");
+        for (double area : circleAreas){
+            System.out.println(area);
         }
     }
 }
