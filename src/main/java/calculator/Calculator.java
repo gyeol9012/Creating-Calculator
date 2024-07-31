@@ -2,18 +2,18 @@ package calculator;
 
 import java.util.ArrayList;
 
-class Calculator{
-    private ArrayList<Integer> results;
+public class Calculator{
+    private ArrayList<Double> results;
     private ArrayList<Double> circleAreas; //원의 넓이 결과를 저장하는 리스트
 
 
     //생성자 : 초기 연산 결과 리스트를 작성
-    public Calculator(ArrayList<Integer> initialResults) {
+    public Calculator(ArrayList<Double> initialResults) {
         this.results =new ArrayList<>(initialResults);
         this.circleAreas = new ArrayList<>(); //원의 넓이 결과 리스트 초기화
     }
-    public int calculate(int num1, int num2, char operator) throws ThrowException {
-         int result;
+    public double calculate(int num1, int num2, char operator) throws ThrowException {
+         double result;
          switch (operator){
              case '+':
                  result = num1+num2;
@@ -44,10 +44,10 @@ class Calculator{
         circleAreas.add(area); //계산된 원의 넓이를 리스트에 추가
          return  area;
      }
-     public ArrayList<Integer> getResults(){
+     public ArrayList<Double> getResults(){
         return new ArrayList<>(results);
      }
-     public void setResults(ArrayList<Integer> results){
+     public void setResults(ArrayList<Double> results){
         this.results =new ArrayList<>(results);
     }
     public ArrayList<Double> getcircleAreas(){ //gtter
@@ -65,7 +65,7 @@ class Calculator{
     }
     public void inquiryResults(){
         System.out.println("저장된 연산 결과들:");
-        for (int result : results) {
+        for (double result : results) {
             System.out.println(result);
         }
     }
@@ -76,4 +76,3 @@ class Calculator{
         }
     }
 }
-

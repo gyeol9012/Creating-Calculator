@@ -7,15 +7,16 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         //초기 results 리스트를 설정하는 예시
-        ArrayList<Integer> initialResults = new ArrayList<>();
-        initialResults.add(100);
-        initialResults.add(200);
+        ArrayList<Double> initialResults = new ArrayList<>();
+        initialResults.add(100.0);
+        initialResults.add(200.0);
 
-        Calculator calculator = new Calculator(initialResults);
-
+//        Calculator calculator = new Calculator(initialResults);
 
         Scanner sc = new Scanner(System.in);
-
+        //사칙연산 계산기와 원의 넓이 계산기 객체 생성
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(initialResults);
+        CircleCalculator circleCalculator = new CircleCalculator(new ArrayList<>());
 
 
          while(true) {
@@ -28,45 +29,38 @@ public class App {
                  int num2 = sc.nextInt();
                  System.out.println("사칙연산 기호를 입력하세요: ");
                  char operator = sc.next().charAt(0);
-                 boolean validOperation = true;
-                 int result;
 
                  try {
-                     result = calculator.calculate(num1, num2, operator);
+                     Double result = arithmeticCalculator.calculate(num1, num2, operator);
                      System.out.println("결과: " + result);
                  } catch (ThrowException e) {
                      System.out.println(e.getMessage());
-                     validOperation = false;
                  }
-                 if (validOperation) {
-                     // 결과값이 이미 리스트에 저장됨
+                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+                 String text2 = sc.next();
+                 if (Objects.equals(text2,"inquiry")){
                  }
              } else if (choice == 2) {
                  System.out.println("원의 반지름을 입력하세요:");
                  double radius = sc.nextDouble();
-                 double area = calculator.calculateCircleArea(radius);
+                 double area = circleCalculator.calculateCircleArea(radius);
                  System.out.println("원의 넓이: " + area);
+
+                 System.out.println("저장된 원의 넓이 결과를 조회하시겠습니까? (circleInquiry 입력 시 조회)");
+                 String text3 = sc.next();
+                 if (Objects.equals(text3,"circleInquiry")){
+                     circleCalculator.inquiryCircleAreas();
+                 }
              } else {
                  System.out.println("잘못된 선택입니다.");
                  continue;
              }
-             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-             String text1 = sc.next();
-             if (Objects.equals(text1,"remove")){
-                     calculator.removeResult();
-                     System.out.println("가장 먼저 저장된 결과를 삭제했습니다");
-             }
-             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-             String text2 = sc.next();
-            if (Objects.equals(text2,"inquiry")){
-            }
-
-             System.out.println("저장된 원의 넓이 결과를 조회하시겠습니까? (circleInquiry 입력 시 조회)");
-            String text3 = sc.next();
-            if (Objects.equals(text3,"circleInquiry")){
-                calculator.inquiryCircleAreas();
-            }
-
+//             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+//             String text1 = sc.next();
+//             if (Objects.equals(text1,"remove")){
+//                     calculator.removeResult();
+//                     System.out.println("가장 먼저 저장된 결과를 삭제했습니다");
+//             }
              System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String text4 = sc.next();
             if(Objects.equals(text4, "exit")) {
